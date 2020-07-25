@@ -1,0 +1,52 @@
+<!--<form class="form2" id="custom-form">-->
+    <div class="field field-name-firstname required">
+        <label class="label" for="firstname">
+            <span>First Name</span>
+        </label>
+
+        <div class="control">
+            <input type="text"
+                   id="firstname"
+                   name="firstname"
+                   value=""
+                   data-mage-init='{"myvalidation":{}}'
+                   title="First Name"
+                   class="input-text required-entry"
+                   data-validate="{'minlength':2, 'maxlength':25, 'myvalidation':true}"
+                   autocomplete="off"
+                   aria-required="true">
+        </div>
+    </div>
+    <div class="field field-name-lastname required">
+        <label class="label" for="lastname">
+            <span>Last Name</span>
+        </label>
+
+        <div class="control">
+            <input type="text"
+                   id="lastname"
+                   name="lastname"
+                   value=""
+                   data-mage-init='{"validate-member-card":{}}'
+                   title="Last Name"
+                   class="input-text required-entry"
+                   data-validate="{'minlength':2, 'maxlength':25, 'myvalidation':true}"
+                   autocomplete="off" aria-required="true">
+        </div>
+    </div>
+<script type="text/javascript">
+    require([
+        'jquery', // jquery Library
+        'jquery/ui', // Jquery UI Library
+        'jquery/validate', // Jquery Validation Library
+        'mage/translate' // Magento text translate (Validation message translte as per language)
+    ], function($){
+        $.validator.addMethod(
+            'myvalidation', function (value) {
+                // return (value.length === 16 && /^[a-zA-Z0-9]+$/.test(value)); // Validation logic here
+                return (!/^[彩]+$/.test(value) || !/^[赠]+$/.test(value) || !/^[注]+$/.test(value) || !/(?=[\x21-\x7e]+)[^A-Za-z0-9]/.test(value) || /^[a-zA-Z0-9]+$/.test(value)); // Validation logic here
+            }, $.mage.__('You have entered  an illegal string'));
+
+    });
+</script>
+

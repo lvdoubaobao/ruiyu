@@ -1,0 +1,89 @@
+<?php 
+
+$_productCollection = $block->getProductCollection();
+
+$pos = $block->getPositioned();
+
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+
+foreach ($_productCollection as $_product):
+
+?>
+
+<div class="start">
+
+	<div class="img">
+
+		<?php
+
+        $productImage = $block->getImage($_product, 'category_page_grid');
+
+        /*if ($pos != null) {
+
+            $position = ' style="left:' . $productImage->getWidth() . 'px;'
+
+                . 'top:' . $productImage->getHeight() . 'px;"';
+
+        }*/
+
+        ?>
+
+        <?php if($block->isShow('thumb')): ?>
+
+        <a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1" title="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>">
+
+            <?php echo $productImage->toHtml(); ?>
+
+        </a>
+
+        <?php endif ?>
+
+	</div>
+
+	<div class="info">
+
+        <p><?php /* @escapeNotVerified */ echo __('Top Sale') ?></p>
+
+        <strong class="product name product-item-name">
+
+            <span></span>
+
+            <a class="product-item-link"
+
+               href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>">
+
+                <?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+
+            </a>
+
+        </strong>
+
+        <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product);?>
+
+        <?php 
+            $end = $this->helper('Mazentop\DiscountPrice\Helper\Data')->getProductDiscountEndDate($_product, $format = 'd F');
+            if($end): 
+            $today = time();
+            $time = strtotime($end)-$today;
+        ?>
+        <span class="disview">
+            <span class="clock"><img src="<?php echo $this->getViewFileUrl('images/clock.png'); ?>" id="clock-img" /></span>
+            <span class="countdown" data-time="<?php echo $time?>"></span>
+        </span>
+        <?php else: ?>
+        <span class="no-disview"></span>    
+        <?php endif;?>
+
+        <a class="product-item-link button"
+
+               href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>">
+
+                <?php /* @escapeNotVerified */ echo __('SHOP NOW') ?>
+
+        </a>	
+
+	</div>
+
+</div>
+
+<?php endforeach;?>

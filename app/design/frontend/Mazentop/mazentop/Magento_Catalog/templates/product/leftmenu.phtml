@@ -1,0 +1,34 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+if($category){
+    $categoryId = $category->getId();
+    $categoryName = $category->getName();
+}
+
+$childCategory = $objectManager->create('Magento\Catalog\Model\Category')->load($categoryId)->getChildren();
+$subCategories = explode(',', $childCategory);
+if($childCategory !== ''):
+
+?>
+<div class="block block-catelog">
+    <div class="block-title">
+        <strong id="block-compare-heading" role="heading" aria-level="2"><?php echo $categoryName;?></strong>
+    </div>
+    <?php
+        foreach ( $subCategories as $subCategoryId )
+        {
+            $cat = $objectManager->create('Magento\Catalog\Model\Category')->load($subCategoryId);
+
+            if($cat->getIsActive())
+            {
+              
+    ?>
+   <div class="filter-options-item catelog-content">
+        <a href="<?php echo $cat->getUrl(); ?>">
+            <div data-role="title" class="item" role="tab" aria-selected="false" aria-expanded="false" tabindex="0"><?php echo $cat->getName();?></div>
+        </a>
+    </div>
+    <?php   }}?>
+</div>
+<?php endif;?>

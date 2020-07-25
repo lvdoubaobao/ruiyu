@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Checkout\Block\Item\Price\Renderer */
+
+$_item = $block->getItem();
+?>
+<span class="price-including-tax" data-label="<?php echo $block->escapeHtml(__('Excl. Tax')); ?>">
+    <span class="cart-price afsuuu">
+        <?php /* @escapeNotVerified */ echo $this->helper('Magento\Checkout\Helper\Data')->formatPrice($_item->getCalculationPrice()) ?>
+    </span>
+    <span class="cart-old-price">
+        <?php /* @escapeNotVerified */ echo $this->helper('Magento\Checkout\Helper\Data')->formatPrice($_item->getCalculationPriceOriginal()) ?>
+    </span>
+    <span class="cart-discount">
+        <?php /* @escapeNotVerified */ echo $this->helper('Mazentop\DiscountPrice\Helper\Data')->DisplayDiscountLabel($_item) ?>
+    </span>
+</span>

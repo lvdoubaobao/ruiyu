@@ -1,0 +1,29 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+
+if($category){
+    $childCategory =$this->helper('Mazentop\DiscountPrice\Helper\Data')->getAllChildrenOfCategory($category);
+}else{
+    $childCategory = false;
+}
+if($childCategory):
+
+?>
+<div class="block-catelog">
+    <div class="block-title">
+        <strong id="block-category" calass="block-category"><?php echo __('Product Categories')?></strong>
+        <div class="line"></div>
+    </div>
+    <?php
+        foreach ( $childCategory as $_child ) :
+    ?>
+   <div class="catelog-content">
+       <i class="fa fa-angle-right"></i>
+        <a href="<?php echo $block->getUrl() . $_child->getRequestPath(); ?>">
+            <div data-role="title" class="itemtitle"><?php echo $_child->getName();?><span class="count">(<?php echo $_child->getProductCollection()->count();?>)</span></div>
+        </a>
+    </div>
+    <?php endforeach;  ?>
+</div>
+<?php endif;?>

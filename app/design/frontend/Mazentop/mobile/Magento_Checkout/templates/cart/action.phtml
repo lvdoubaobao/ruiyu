@@ -1,0 +1,24 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**  @var $block \Magento\Checkout\Block\Cart */
+?>    
+<div class="cart main actions">
+    <button type="submit"
+            name="update_cart_action"
+            data-cart-empty=""
+            value="empty_cart"
+            title="<?php echo $block->escapeHtml(__('Empty Cart')); ?>"
+            class="action clear" id="empty_cart_button">
+        <span><?php /* @escapeNotVerified */ echo __('Empty Cart'); ?></span>
+    </button>
+    <a class="action continue"
+       href="<?php echo $block->escapeUrl($block->getContinueShoppingUrl()) ?>"
+       title="<?php echo $block->escapeHtml(__('Continue Shopping')); ?>">
+        <span><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span>
+    </a>
+    <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update=""/>
+</div>

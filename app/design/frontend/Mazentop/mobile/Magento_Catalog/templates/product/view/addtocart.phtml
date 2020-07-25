@@ -1,0 +1,181 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()): ?>
+<div class="box-tocart">
+    <div class="fieldset">      
+        <?php if ($block->shouldRenderQuantity()): ?>
+        <div class="field qty">
+            <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
+            <div class="control">                
+                <input type="number"
+                       name="qty"
+                       id="qty"
+                       maxlength="12"
+                       value="<?php /* @escapeNotVerified */ echo $block->getProductDefaultQty() * 1 ?>"
+                       title="<?php /* @escapeNotVerified */ echo __('Qty') ?>" class="input-text qty"
+                       data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                       />
+                <a href="javascript:void(0)" class="reduceQty qtybtn">
+                    <span class="down"></span>
+                </a> 
+                <a href="javascript:void(0)" class="addQty qtybtn">
+                    <span class="up"></span>
+                </a>
+                
+            </div>
+        </div>
+        <?php endif; ?>
+        <?php 
+            $wishCount =  $this->helper('Mazentop\DiscountPrice\Helper\Data')->getWishCount($_product->getId());
+            if($wishCount > 0):
+        ?>
+        <div class="wishlistcount">
+            <span><i class="fa fa-heart-o"></i></span>
+            <div class="count"><?php echo $wishCount; ?> &nbsp;<?php echo __('Liked');?></div>
+        </div>
+        <?php endif;?>
+        <div class="stockNum">
+            ( <?php 
+            echo __('Inventory:');
+            echo $this->helper('Mazentop\DiscountPrice\Helper\Data')->getStockNum($_product); 
+            ?> )
+        </div>
+        <div class="total">        
+            <span class="totalprice"><?php echo __('Total Price:')?></span>
+            <div class="price-box">
+                    <span class="price-container price-final_price">
+                        <span class="price"></span>
+                    </span>
+            </div>
+         <?php /* @escapeNotVerified */ ?>
+        </div>
+        <div class="actions">
+            <button type="submit"
+                    title="<?php /* @escapeNotVerified */ echo $buttonTitle ?>"
+                    class="action primary tocart"
+                    id="product-addtocart-button">
+                <span><?php /* @escapeNotVerified */ echo $buttonTitle ?></span>
+            </button>            
+            <?php echo $block->getChildHtml('', true) ?>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+<style>
+    .box-tocart .actions .paypal.checkout{
+/*        width: 210px;*/
+        margin-top: 10px;
+        position: relative;
+        left: initial;
+        top: inherit;
+        float: left;
+        margin-bottom: 10px;
+        max-width:100%;
+        overflow: hidden;
+    }
+    .box-tocart .actions .paypal.checkout:last-child:before{
+        content: 'OR';
+        display: inline-block;
+        padding: 0 0px;
+        font-size: 15px;
+        position: absolute;
+        left: -32px;
+        top: 5px;
+    }
+    @media screen and (max-width: 400px){
+        .box-tocart .actions .paypal.checkout{
+            position: static !important;
+        }
+    }
+</style>
+<script type="text/javascript">
+ga("require", "ec");
+ga("ec:addProduct", {
+    "id": "<?php echo $_product->getSKU();?>",
+    "name": '<?php echo $_product->getName();?>',
+    "price": "<?php echo $_product->getPrice();?>",  
+    "position": 0
+});
+ga("ec:setAction", "detail");
+
+  var google_tag_params = {
+    ecomm_prodid: '<?php echo $_product->getSKU();?>',
+    ecomm_pagetype: 'product',
+};
+/* <![CDATA[ */
+var google_conversion_id = 676273579;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/676273579/?guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<script>
+    require([
+    "jquery"
+    ], function ($) {        
+        $('.paypal.checkout.before.paypal-logo').click(function(){
+            ga('send','event','checkout with paypal','click');
+        });
+        $('#product-addtocart-button').click(function(){
+            var qty = $('#qty').val();
+            ga("require", "ec");
+            ga("ec:addProduct", {
+              "id": "<?php echo $_product->getSKU();?>",
+              "name": '<?php echo $_product->getName();?>',
+              "price": "<?php echo $_product->getPrice();?>",              
+              "quantity": qty
+            });
+            ga("ec:setAction", "add");
+            ga("send", "event", "detail view", "click", "addToCart");
+        });
+        $('#buy-now').click(function(){
+            var qty = $('#qty').val();
+            ga("require", "ec");
+            ga("ec:addProduct", {
+              "id": "<?php echo $_product->getSKU();?>",
+              "name": '<?php echo $_product->getName();?>',
+              "price": "<?php echo $_product->getPrice();?>",              
+              "quantity": qty
+            });
+            ga("ec:setAction", "add");
+            ga("send", "event", "detail view", "click", "BuyNow");
+        });
+    })
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/product/view/validation": {
+                "radioCheckboxClosest": ".nested"
+            }
+        }
+    }
+</script>
+<?php if (!$block->isRedirectToCartEnabled()) : ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "catalogAddToCart": {
+                "bindSubmit": false
+            }
+        }
+    }
+</script>
+<?php endif; ?>

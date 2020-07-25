@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+    	<referenceBlock name="customer.wishlist.items">
+    		<block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart" name="customer.wishlist.item.cus.qty" template="Magento_Wishlist::item/column/qty.phtml" cacheable="false" before="customer.wishlist.item.price">
+    		</block>
+    	</referenceBlock>
+    </body>
+</page>

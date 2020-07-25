@@ -1,0 +1,72 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Form\Login $block */
+?>
+<?php
+/**
+ * Customer login form template
+ *
+ * @see \Magento\Customer\Block\Form\Login
+ * @var $block \Magento\Customer\Block\Form\Login
+ */
+?>
+<div class="block block-customer-login">
+    <div class="block-content mini-login" >
+        <div class="block-title">
+            <strong><span><?php echo __('Sign In') ?></span></strong>
+        </div>
+        <form class="form form-login"
+              action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>"
+              method="post"
+              id="login-form-mini"
+              data-mage-init='{"validation":{}}'>
+            <?php echo $block->getBlockHtml('formkey'); ?>
+            <fieldset class="fieldset login" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                <div class="field email required">
+                    <div class="lebel"><span><?php /* @escapeNotVerified */ echo __('Email:') ?></span></div>
+                    <div class="control">
+                        <input placeholder="<?php /* @escapeNotVerified */ echo __('Email') ?>" name="login[username]" value="<?php echo $block->escapeHtml($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> id="email" type="email" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+                <div class="field password required">
+                    <div class="lebel"><span><?php /* @escapeNotVerified */ echo __('Password:') ?></span></div>
+                    <div class="control">
+                        <input placeholder="<?php /* @escapeNotVerified */ echo __('Password') ?>" name="login[password]" type="password" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> class="input-text" id="pass" title="<?php /* @escapeNotVerified */ echo __('Password') ?>" data-validate="{required:true, 'validate-password':true}">
+                    </div>
+                </div>
+                <?php echo $block->getChildHtml('form_additional_info'); ?>
+                <div class="actions-toolbar">
+                    <div class="">
+						<button type="submit" class="action login primary" name="send" id="send2"><span><?php /* @escapeNotVerified */ echo __('Login') ?></span></button></div>
+					<div class="secondary">
+					</div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+     <div class="siginin_menu_r f11">
+        <div class="block-title">
+            <strong><span><?php echo __('New Customer') ?></span></strong>
+        </div>
+          <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('new-customer')->toHtml(); ?>
+        <div class="actions">
+            <a href="<?php echo $block->getUrl('customer/account/create/') ?>" title="<?php echo __('Register') ?>">
+                <button type="submit" class="button"><span><span><?php echo __('Register > ') ?></span></span></button>
+            </a>
+        </div>
+    </div>
+    <?php echo $block->getChildHtml('social-login'); ?>
+</div>
+<style>
+    .log-in .block.social-login-authentication-channel{
+        max-width: 400px;
+        margin: 0 auto;
+        clear: both;
+    }
+</style>

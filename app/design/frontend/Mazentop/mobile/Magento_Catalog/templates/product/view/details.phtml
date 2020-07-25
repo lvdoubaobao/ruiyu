@@ -1,0 +1,70 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
+    <div class="product info detailed">
+        <?php $layout = $block->getLayout(); ?>
+        <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                ?>
+                <div class="data item title"
+                     aria-labeledby="tab-label-<?php /* @escapeNotVerified */ echo $alias;?>-title"
+                     data-role="collapsible" id="tab-label-<?php /* @escapeNotVerified */ echo $alias;?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?php /* @escapeNotVerified */ echo $alias; ?>"
+                       id="tab-label-<?php /* @escapeNotVerified */ echo $alias;?>-title">
+                        <?php /* @escapeNotVerified */ echo $label; ?>
+                    </a>
+                </div>
+                <div class="data item content" id="<?php /* @escapeNotVerified */ echo $alias; ?>" data-role="content">
+                    <?php /* @escapeNotVerified */ echo $html; ?>
+                </div>
+            <?php endforeach;?>
+        </div>
+    </div>
+<?php endif; ?>
+<style>
+    @media only screen and (max-width: 767px){
+    .product.data.items .item.title.active.closeclick a:after{
+            content: '\e622' !important;
+    }
+    .product.data.items > .item.content.close{
+        display:none !important;
+    }
+}
+</style>
+<script>
+require([
+    "jquery"
+], function ($) {
+    $(function () { 
+        if ($(window).width() < '768') {
+            $('.product.detailed .data.item.title:first').addClass('close');
+            $(document).on('click', '.product.detailed .data.item.title.active', function () {
+                $(this).toggleClass('close');
+                $(this).siblings().removeClass('close');
+                 $(this).removeClass('closeclick');
+                $(this).siblings().removeClass('closeclick');
+            })
+            $(document).on('click', '.product.detailed .data.item.title.close', function () {
+                $(this).toggleClass('closeclick');
+                $(this).next('.product.detailed .data.item.content').toggleClass('close');
+                $(this).siblings().removeClass('closeclick');
+            })
+        }
+    })
+})
+</script>

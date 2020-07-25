@@ -1,0 +1,17 @@
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<ul class="opc-progress-bar">
+     <li class="step step1">       
+             <div class="num"></div>
+        <span class="stepdes">Step 1: Shipping Cart</span>
+    </li>
+    <!-- ko foreach: { data: steps().sort(sortItems), as: 'item' } -->
+        <li class="opc-progress-bar-item" data-bind="css: item.isVisible() ? '_active' : ($parent.isProcessed(item) ? '_complete' : '')">
+            <span data-bind="i18n: item.title, click: $parent.navigateTo"></span>
+        </li>
+    <!-- /ko -->
+</ul>

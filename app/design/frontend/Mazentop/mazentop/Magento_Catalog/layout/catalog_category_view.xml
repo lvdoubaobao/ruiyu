@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="sidebar.main">
+            <block class="Magento\Framework\View\Element\Template" name="left.menu" template="Magento_LayeredNavigation::layer/leftmenu.phtml"/>            
+             <block class="Magento\Cms\Block\Block" name="block_catelog_adleft">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">catelog-ad-left</argument>
+                </arguments>
+            </block>
+             <block class="Magento\Cms\Block\Block" name="block_catelog_hotproleft" before="block_catelog_adleft">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">catelog-hot-product</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="block_catelog_recentlyview" after="block_catelog_hotproleft">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">catelog_recently_view</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="page.bottom.container">
+            <block class="Magento\Cms\Block\Block" name="block_catelog_youlike" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">catelog_you_like</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+         <referenceContainer name="sidebar.additional" remove="true" />
+         <referenceContainer name="compare" remove="true" />
+<!--     <referenceContainer name="wishlist_sidebar" remove="true" />
+         <referenceContainer name="catalog.compare.sidebar" remove="true" /> -->         
+          <move element="catalog.leftnav" destination="content" after="category.image" />
+          <move element="category.product.addto.wishlist" destination="category.product.addto" after="-" />
+          
+          <move element="category.image" destination="content" before="-" />
+
+    </body>
+</page>

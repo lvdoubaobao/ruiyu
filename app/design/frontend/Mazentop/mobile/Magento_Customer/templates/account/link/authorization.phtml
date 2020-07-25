@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Customer\Block\Account\AuthorizationLink */
+$dataPostParam = '';
+if ($block->isLoggedIn()) {
+    $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+}
+?>
+<li class="link switcher <?php echo $block->isLoggedIn() ? 'log-out' : 'log-in' ?>" id="authorization-top-link"> <?php /* data-label="<?php echo $block->escapeHtml(__('or')); ?>" */ ?>
+	<?php if( $block->isLoggedIn() ): ?>
+	<a <?php /* @escapeNotVerified */ echo $block->getLinkAttributes(); ?><?php /* @escapeNotVerified */ echo $dataPostParam; ?>>
+            <?php echo $block->escapeHtml($block->getLabel()); ?>
+        </a>
+    &nbsp; &nbsp;
+            <a href="<?php echo $this->getUrl('customer/account/');?>" title="<?php echo __('My Account')?>"> <?php echo __('My Account')?></a>
+	<?php else: ?>
+	<a style="display:none" class="log-in link" <?php /* @escapeNotVerified */ echo $block->getLinkAttributes(); ?><?php /* @escapeNotVerified */ echo $dataPostParam; ?>>
+        <?php echo $block->escapeHtml($block->getLabel()); ?>/<?php echo __('Login')?>
+    </a>
+	<div class="actions dropdown options switcher-options">
+		<div class="action toggle switcher-trigger" id="authorization-trigger">
+			<?php echo $block->escapeHtml($block->getLabel()); ?>/<?php echo __('Register')?>
+		</div>
+		<div style="display:none;" id="cdz-login-form-dropdown" class="cdz-login-form-dropdown dropdown switcher-dropdown"  data-mage-init='{"dropdownDialog":{
+					"appendTo":"#authorization-top-link > .options",
+					"triggerTarget":"#authorization-trigger",
+					"closeOnMouseLeave": false,
+					"triggerClass":"active",
+					"parentClass":"active",
+					"buttons":null}}'>
+			<?php echo $block->getChildHtml('customer_form_login_mini') ?>
+		</div>
+	</div>
+	<?php endif ?>
+</li>
+<li  class="link online-help">
+    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('online-help-link')->toHtml(); ?>
+</li>

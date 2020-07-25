@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="homepage-top-fast-nav" remove="true"/>
+        <referenceBlock name="review.cms.home" remove="true"/>
+        <referenceBlock name="add_home_top" remove="true"/>
+        <referenceBlock name="add_home_middle" remove="true"/>
+        <referenceBlock name="add_home_bottom" remove="true"/>
+        <referenceContainer name="content">
+            <block class="Magento\Cms\Block\Block" name="add_home_top_mobile">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">add_home_top_mobile</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="add_home_middle_mobile">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">add_home_middle_mobile</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="add_home_bottom_mobile">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">add_home_bottom_mobile</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+	        <block class="Magento\Cms\Block\Block" name="customer_show" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">customer_show</argument>
+                </arguments>
+	        </block>
+	    </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,37 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct();?>
+<?php 
+$end = $this->helper('Mazentop\DiscountPrice\Helper\Data')
+        ->getProductDiscountEndDate($_product, $format = 'd F');
+$today = time();
+if($end && strtotime($end) > $today):
+$time = strtotime($end)-$today;
+?>
+
+<span class="disview">   
+    <span class="clock"><img src="<?php echo $this->getViewFileUrl('images/clock.png'); ?>" id="clock-img" /></span> 
+    <span class="countdown" data-time="<?php echo $time?>"></span>
+</span>
+<?php endif;?>
+<style>
+	.discount-price{
+		display: inline-block;
+	    position: relative;
+	    top: 20px;
+	}
+	.discount-price img{
+		vertical-align: middle;
+	}
+	.discount-price .disview{
+		position:static !important;
+	}
+</style>

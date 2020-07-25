@@ -1,0 +1,187 @@
+// /**
+//  * Copyright © 2015 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+@import 'module/_cart.less';
+@import 'module/_minicart.less';
+@import 'module/_checkout.less';
+
+.cart-discount{
+    .block.discount{
+        float: left;
+    }
+    .block.shipping{
+        width: 100%;
+        display: none;
+    }
+} 
+.checkout-cart-index{
+    .page-title-wrapper{
+        display: none;
+    }
+}
+.cart-step .shopping-step{
+    max-width:850px;
+    margin:20px auto;
+    overflow:hidden;
+    li.step{
+        float: left;
+        list-style: none;
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        vertical-align: top;
+        width: 33.33%;
+        &:after{
+            background: #e4e4e4;
+            top: 19px;
+            transition: background 0.3s;
+            content: '';
+            height: 7px;
+            left: 0;
+            position: absolute;
+            width: 100%;
+        }   
+        span{
+            display: block;
+            padding-top: 45px;
+            width: 100%;
+            word-wrap: break-word;
+            color: #656565;
+            font-weight: 400;
+            font-size: 1.4rem;
+        }
+        span.num{
+            &:before{
+                background: #fff;
+                border: 1px solid #AEAEAE;
+                height: 28px;
+                margin-left: -19px;
+                transition: background 0.3s;
+                width: 28px;
+                border-radius: 50%;
+                content: '';
+                left: 52%;
+                position: absolute;
+                top: 5px;
+                z-index: 9;
+            }
+            &:after{
+                height: 16px;
+                margin-left: -13px;
+                top: 11px;
+                width: 16px;
+                background: #A7A7A7;
+                border-radius: 50%;
+                content: '';
+                left: 52%;
+                position: absolute;
+                z-index: 9;
+            }
+        }
+        span.stepdes{
+            color:#a11a52;
+            font-size: 18px;
+            padding-top: 5px;
+        }
+        &._active{
+            &:after{
+                background: #a11a52;
+            }
+            span.num{
+                &:before{
+                    border:1px solid #a11a52;
+                }
+                &:after{
+                    background: #a11a52;
+                }
+            }
+        }
+    }
+    li.step.step1{
+        &:after{
+            width: 50%;
+            right: 0;
+            left: initial;
+        }        
+    }
+    li.step.step3{
+        &:after{
+            width: 50%;
+        }
+    }    
+}
+.cart-right{
+    border:1px solid #E3E3E3;
+    padding: 15px;
+    span{
+        font-size: 14px;
+        font-weight: 600;        
+    }
+    div.title{
+        font-size: 18px;
+        color:#719F47;
+        margin-bottom: 10px;
+    }
+    a{
+        color:#000;
+        text-decoration: underline;
+        &:hover{
+            color:#a11a52;
+        }
+    }
+}
+.col.subtotal{
+    position: relative;
+    .actions-toolbar {
+        > .action-edit{
+            display: none;
+        }
+        > .action-delete {
+            position: absolute;
+            right: -30px;
+            top: -20px;
+            &:before{
+                color: #D2D2D2;
+            }
+        }
+    }
+}
+.cart-container .form-cart .actions.main{
+    .continue,.clear{
+        display: block;
+    }
+    .clear{
+        text-decoration-line: underline;
+        border: 0;
+        color: #333;
+        background-color: #fff;
+        float: left;
+        margin-left: 10px;
+        padding-left: 0;
+    }
+    .continue{
+        float: right;
+        font-size: 1.4rem;
+        color:#a11a52;
+        font-weight: 600;
+        text-decoration-line: underline;
+        padding: 8px 15px;
+        margin-right: 10px;
+        padding-right: 0;
+    }
+}
+.opc-estimated-wrapper .minicart-wrapper button.action.showcart{
+    background: #a11a52 !important;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; 
+    .counter.qty{
+        color: #fff;
+        vertical-align: initial;
+        position: absolute;
+        top: -8px;
+        left: 2px;
+    }
+}

@@ -1,0 +1,75 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<?php
+
+/**
+*  General template for displaying group of blocks devided into sections
+*/
+
+$group = $block->getGroupName();
+$groupCss = $block->getGroupCss();
+$groupBehavior = $block->getGroupBehaviour() ? $block->getGroupBehaviour() : '{"tabs":{"openedState":"active"}}';
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames($group, 'getChildHtml')):?>
+    <div class="sections <?php /* @escapeNotVerified */ echo $groupCss ?>">
+        <?php $layout = $block->getLayout(); ?>
+        <div class="section-items <?php /* @escapeNotVerified */ echo $groupCss ?>-items" data-mage-init='<?php /* @escapeNotVerified */ echo $groupBehavior ?>'>
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html) && ($block->getUseForce() != true)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                ?>
+                <div class="section-item-title <?php /* @escapeNotVerified */ echo $groupCss ?>-item-title" data-role="collapsible">
+                    <a class="<?php /* @escapeNotVerified */ echo $groupCss ?>-item-switch" data-toggle="switch" href="#<?php /* @escapeNotVerified */ echo $alias; ?>"><?php /* @escapeNotVerified */ echo $label; ?></a>
+                </div>
+                <div class="section-item-content <?php /* @escapeNotVerified */ echo $groupCss ?>-item-content" id="<?php /* @escapeNotVerified */ echo $alias; ?>" data-role="content"><?php /* @escapeNotVerified */ echo $html; ?></div>
+            <?php endforeach;?>
+        </div>
+        <div class="menu-footer">
+                <ul>
+                    <li>                       
+                        <a href="<?php echo $this->getUrl('customer/account/');?>">
+                            <div class="myaccount">
+                                <span class="img"><img src="<?php echo $this->getViewFileUrl('images/account.png'); ?>" alt="<?php echo __('My Account') ?>" /></span>
+                                <span><?php echo __('My Account') ?></span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="link wishlist" data-bind="scope: 'wishlist'"> 
+                        <a href="<?php echo $this->getUrl('wishlist');?>">
+                           <div class="wishlist">
+                            <span class="img"><img src="<?php echo $this->getViewFileUrl('images/wishlist.png'); ?>" alt="<?php echo __('Wish List') ?>" /></span>
+                            <span><?php echo __('Wish List') ?></span>
+                            <!-- ko if: wishlist().counter -->
+                            <span data-bind="text: wishlist().counter" class="counter qty"></span>
+                            <!-- /ko -->
+                            </div>
+                        </a>    
+                    </li>
+                        <script type="text/x-magento-init">
+                             {
+                                "*": {
+                                    "Magento_Ui/js/core/app": {
+                                        "components": {
+                                            "wishlist": {
+                                                "component": "Magento_Wishlist/js/view/wishlist"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        </script>
+                </ul>
+            </div>
+    </div>
+<?php endif; ?>
+

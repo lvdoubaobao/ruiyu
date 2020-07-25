@@ -1,0 +1,57 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Shopping cart totals template
+ * @var $block \Magento\Checkout\Block\Cart\Totals
+ */
+?>
+<div id="cart-totals" class="cart-totals" data-bind="scope:'block-totals'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+            {
+                "#cart-totals": {
+                    "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
+                }
+            }
+    </script>
+</div>
+<?php 
+$_helper = $this->helper('Mazentop\DiscountPrice\Helper\Data');
+$quote = $_helper->getCheckoutSession()->getQuote();
+$items = $quote->getAllItems();
+$proId = array();
+$type = array();
+foreach($items as $key=>$item) {
+    $product = $item->getProduct(); 
+    $proId[$key]= $item->getProductId();
+}
+foreach ($proId as $v) {
+    $a[]  = $v;
+}
+$strproId = implode(',',$a);
+$grandTotal = $quote->getGrandTotal();
+
+?>
+<script type="text/javascript"> 
+  var google_tag_params = {
+    ecomm_prodid: '<?php echo $strproId;?>',
+    ecomm_pagetype: 'cart',
+};
+/* <![CDATA[ */
+var google_conversion_id = 828804618;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/828804618/?guid=ON&amp;script=0"/>
+</div>
+</noscript>

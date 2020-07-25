@@ -1,0 +1,69 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**  @var $block \Magento\Checkout\Block\Cart */
+?>
+<div class="cus-thick-border"></div>
+<?php $mergedCells = ($this->helper('Magento\Tax\Helper\Data')->displayCartBothPrices() ? 2 : 1); ?>
+<?php echo $block->getChildHtml('form_before') ?>
+<form action="<?php /* @escapeNotVerified */ echo $block->getUrl('checkout/cart/updatePost') ?>"
+          method="post"
+          id="form-validate"
+          data-mage-init='{"validation":{}}'
+          class="form form-cart">
+    <?php echo $block->getBlockHtml('formkey'); ?>
+    <div class="cart table-wrapper<?php echo $mergedCells == 2 ? ' detailed' : ''; ?>">
+        <div id="shopping-cart-table"
+               class="cart items data table"
+               data-mage-init='{"shoppingCart":{"emptyCartButton": "action.clear",
+               "updateCartActionContainer": "#update_cart_action_container"}}'>
+            <?php foreach ($block->getItems() as $_item): ?>
+                <?php echo $block->getItemHtml($_item) ?>
+            <?php endforeach ?>
+        </div>
+    </div>
+    <div class="cart main actions">
+        <button type="submit"
+                name="update_cart_action"
+                data-cart-empty=""
+                value="empty_cart"
+                title="<?php echo $block->escapeHtml(__('Empty Cart')); ?>"
+                class="action clear" id="empty_cart_button">
+            <span><?php /* @escapeNotVerified */ echo __('Empty Cart'); ?></span>
+        </button>
+        <a class="action continue"
+           href="<?php echo $block->escapeUrl($block->getContinueShoppingUrl()) ?>"
+           title="<?php echo $block->escapeHtml(__('Continue Shopping')); ?>">
+            <span><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span>
+        </a>
+        <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update=""/>
+    </div>
+</form>
+<?php echo $block->getChildHtml('checkout.cart.order.actions') ?>
+<?php echo $block->getChildHtml('shopping.cart.table.after'); ?>
+
+<script type="text/javascript">
+    require(["jquery"],function($){
+        $('.more, .less').on("click",function(){
+            var $this = $(this);
+            var currentQty = $this.siblings('.input-text').val();
+
+            if($this.hasClass('more')){
+                console.log(parseInt(currentQty)+parseInt(1));
+                var newAdd = parseInt(currentQty)+parseInt(1);
+                $this.siblings('.input-text').val(newAdd);
+                $('#form-validate').submit();
+            }else{
+               var newAdd = parseInt(currentQty)-parseInt(1);
+               if(newAdd > 0){
+                  $this.siblings('.input-text').val(newAdd); 
+                   $('#form-validate').submit();
+               }
+                 
+            }
+        });        
+    });
+</script>

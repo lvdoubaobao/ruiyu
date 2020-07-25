@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright © 2017 Mazentop. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+?>
+<div class="page-footer">
+    <div class="footer-share">
+        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_share')->toHtml(); ?>
+    </div>
+    <div class="footer-main">
+        <div class="page-main">
+            <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_company')->toHtml(); ?>
+        </div>
+    </div>
+</div>

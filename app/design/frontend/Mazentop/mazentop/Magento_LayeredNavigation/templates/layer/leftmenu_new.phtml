@@ -1,0 +1,34 @@
+<?php
+$childCategory = $this->helper('Mazentop\DiscountPrice\Helper\Data')->getAllcategory();
+?>
+<div class="block-catelog">
+    <div class="block-title">
+        <strong id="block-category" calass="block-category"><?php echo __('Product Categories') ?></strong>
+        <div class="line"></div>
+    </div>
+    <ul class="catelog-content-new">
+        <?php foreach ($childCategory as $_child): ?>
+            <li class="level0 <?php if (isset($_child['child'])): ?>parent<?php endif; ?>">
+                <div data-role="title" class="itemtitle">
+                    <a href="<?php echo $_child['url']; ?>">
+                        <?php echo $_child['catename']; ?>
+                    </a>
+                    <?php if (isset($_child['child'])): ?>
+                        <span class="expander open">+</span>
+                    <?php endif; ?>
+                </div>
+                <?php if (isset($_child['child'])): ?>
+                <ul class="haschild" style="display:none">
+                    <?php foreach ($_child['child'] as $v): ?>
+                        <li class="level1">
+                            <a href="<?php echo $v['suburl']; ?>">
+                                <?php echo $v['subname']; ?>
+                            </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

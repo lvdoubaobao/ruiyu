@@ -1,0 +1,100 @@
+<?php
+/**
+ * Copyright © 2017 Mazentop. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+?>
+<style>
+    .footer-main .page-main .links ul.active{
+        display: block !important;
+    }
+</style>
+<div class="page-footer">
+    <div class="footer-share">
+        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_social_img_links')->toHtml(); ?>
+    </div>
+    <div class="footer-main">
+        <div class="page-main">
+            <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_company_mobile')->toHtml(); ?>
+        </div>
+    </div>
+    <div class="block newsletter">
+        <div class="title"><strong>Newsletter</strong></div>
+        <div class="content">
+            <form class="form subscribe"
+                novalidate
+                action="<?php /* @escapeNotVerified */ echo $block->getFormActionUrl() ?>"
+                method="post"
+                data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+                id="newsletter-validate-detail">
+                <div class="field newsletter">
+                    <label class="label" for="newsletter"><span><?php /* @escapeNotVerified */ echo __('Sign Up for Our Newsletter:') ?></span></label>
+                    <div class="control">
+                        <input name="email" type="email" id="newsletter"
+                                    placeholder="<?php /* @escapeNotVerified */ echo __('Enter your email address') ?>"
+                                    data-validate="{required:true, 'validate-email':true}"/>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="action subscribe primary" title="<?php /* @escapeNotVerified */ echo __('Subscribe') ?>" type="submit">
+                        <span><?php /* @escapeNotVerified */ echo __('Subscribe') ?></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="non-space"></div>
+<div class="footer-menu">
+    <ul>
+        <li class="home">
+            <a href="<?php echo $this->getUrl();?>">
+                <div class="img"><img src="<?php echo $this->getViewFileUrl('images/home.png'); ?>" alt="<?php echo __('Home')?>" /></div>
+                <div  class="name"><?php echo __('Home')?></div>
+            </a>
+        </li>
+        <li class="account">
+            <a href="<?php echo $this->getUrl('customer/account/');?>">
+                <div class="img"><img src="<?php echo $this->getViewFileUrl('images/account.png'); ?>" alt="<?php echo __('Account')?>" /></div>
+                <div  class="name"><?php echo __('Account')?></div>
+            </a>
+        </li>
+        <li class="cart">
+            <?php echo $block->getChildHtml('minicart');?>
+            <a href="<?php echo $this->getUrl('checkout/cart/');?>">                
+                <div class="img"><img src="<?php echo $this->getViewFileUrl('images/cart.png'); ?>" alt="<?php echo __('Cart')?>" /></div>
+                <div  class="name"><?php echo __('Cart')?></div>
+            </a>
+        </li>
+        <li class="wishlist">
+            <a href="<?php echo $this->getUrl('wishlist');?>">
+                <div class="img"><img src="<?php echo $this->getViewFileUrl('images/wishlist.png'); ?>" alt="<?php echo __('Wish List')?>" /></div>
+                <div class="name"><?php echo __('Wish list')?></div>
+            </a>
+        </li>
+        <li class="chat">
+            <a href="javascript:void(0);">
+                <div class="img"><img src="<?php echo $this->getViewFileUrl('images/chat.png'); ?>" alt="<?php echo __('Chat')?>" /></div>
+                <div class="name"><?php echo __('Chat')?></div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<script>
+require([
+    "jquery"
+], function ($) {
+    $(function () { 
+        $('.footer-main .links .title').click(function () {
+            $(this).toggleClass('active').siblings().removeClass('close');
+            $(this).siblings('ul').toggleClass('active').removeClass('close');
+        });
+    })
+})
+</script>

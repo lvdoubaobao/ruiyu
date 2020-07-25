@@ -1,0 +1,14 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+$item = $block->getItem();
+?>
+
+<div class="cus-wishlist-qty">
+	<span class="word"><?php echo __('Qty:')?></span>
+	<span class="num"><?php echo (int)$this->getAddToCartQty($item)?></span>
+</div>

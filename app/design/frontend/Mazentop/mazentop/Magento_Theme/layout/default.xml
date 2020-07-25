@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <css src="css/cw-theme.css"/>
+    </head>
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/logo.png</argument>
+                <argument name="logo_img_width" xsi:type="number">180</argument>
+                <argument name="logo_img_height" xsi:type="number">55</argument>
+            </arguments>
+        </referenceBlock>      
+        <referenceBlock name="top.links">
+            <block class="Magento\Theme\Block\Html\Header" name="header" as="header" before="-">
+                <arguments>
+                    <argument name="show_part" xsi:type="string">welcome</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceContainer name="page.wrapper">            
+            <container name="backtop" after="footer-container">
+                <block class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/back_to_top.phtml" />
+            </container>
+        </referenceContainer>
+    
+        <referenceContainer name="footer">
+            <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="switch/stores.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="footer-top">
+            <block class="Magento\Framework\View\Element\Template" name="cpanel.footer" as="cpanel footer" after="form.subscribe" before="-" template="Magento_Theme::html/footer/footer.phtml" />
+            <container name="footer.container.bottom" label="Footer Container Bottom" after="cpanel.footer" htmlTag="div" htmlId="bottomfooter" htmlClass="bottom-footer-wrapper">
+                <container name="footer.bottom" label="Footer Bottom" after="cpanel.footer.bottom" htmlTag="div" htmlId="bottom-footer" htmlClass="bottom-footer-content">
+                    <block class="Magento\Theme\Block\Html\Footer" name="copyright" after="cpanel.footer" template="html/copyright.phtml"/>       
+                </container>                
+            </container>            
+            <block class="Magento\Framework\View\Element\Template" name="report.bugs" template="Magento_Theme::html/bugreport.phtml" />
+        </referenceContainer>
+        <referenceContainer name="footer.container.bottom">
+            <container name="footer.payment.block" htmlTag="div" htmlClass="footer-payment-logo" label="Footer Payment Block" before="copyright">
+                        <block class="Magento\Cms\Block\Block" name="block_identifier">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">footer_bottom_pay_img</argument>
+                            </arguments>
+                        </block>
+                    </container>        
+        </referenceContainer>
+
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Template" name="header_images" as="header_images" after="minicart" template="Magento_Theme::header_images.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="after.body.start">
+             <block class="Magento\Framework\View\Element\Template" name="top_discount_image" as="top-discount-image" after="-" template="Magento_Theme::top-discount-image.phtml" />
+            <block class="Magento\Framework\View\Element\Template" name="ad_top_links" as="ad_top_links" after="-" template="Magento_Theme::ad_top_links.phtml"/>
+        </referenceContainer>
+
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="footer" remove="true"/>
+        <referenceBlock name="skip_to_content" remove="true"/>
+        
+        <move element="store_language" destination="header.panel" before="-" />
+        <move element="logo" destination="header.panel" after="-" />
+        <move element="top.search" destination="header.panel" after="logo" />
+        <move element="minicart" destination="header.panel" after="top.search" />
+        <referenceContainer name="catalog.compare.link" remove="true" />
+        <referenceContainer name="register-link" remove="true" />
+    </body>
+</page>

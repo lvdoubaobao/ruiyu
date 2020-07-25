@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="checkout.cart.container">
+            <container name="cart.discount" label="Cart Discount Container" htmlTag="div" htmlClass="cart-discount" after="-" >
+               <!--  <block class="Magento\Checkout\Block\Cart" name="checkout.cart.order.cus.actions" after="checkout.cart.coupon" template="Magento_Checkout::cart/action.phtml"></block> -->
+            </container>
+        </referenceContainer>
+        
+        <referenceContainer name="checkout.cart.methods">
+            <block class="Magento\Cms\Block\Block" name="block_shopping_cartaccpet" after="checkout.cart.shortcut.buttons">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">shopping-cart-accpet</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="block_shopcart_tips">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">shopping-cart-tips</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="block_shopcart_adright" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">shopping-cart-right</argument>
+                </arguments>
+            </block>              
+        </referenceContainer>
+        
+        <referenceContainer name="checkout.cart.methods.multishipping" remove="true" />
+        <referenceContainer name="shopping.cart.step" remove="true" />
+        <referenceContainer name="checkout.cart.crosssell" remove="true" />
+        <move element="cart.summary" destination="cart.discount" after="-" />
+       <!--  <move element="checkout.cart.coupon" destination="cart.discount" before="checkout.cart.order.cus.actions"/>      -->
+        <move element="checkout.cart.shortcut.buttons" destination="checkout.cart.methods" after="checkout.cart.methods.onepage.bottom"/>
+        <move element="checkout.cart.useful" destination="checkout.cart.methods" before="block_shopcart_adright"/>
+    </body>
+</page>

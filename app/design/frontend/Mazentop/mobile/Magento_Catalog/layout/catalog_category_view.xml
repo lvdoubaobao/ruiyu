@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    	<referenceBlock name="product_list_toolbar_pager">
+            <action method="setDefaultGridPerPage">
+                <argument name="limit" xsi:type="string">10</argument>
+            </action>
+    	</referenceBlock>        
+        <referenceContainer name="sidebar.additional" remove="true" />
+        <!--<referenceContainer name="category.image" remove="true" />       -->
+        <referenceContainer name="you-may-like" remove="true" />       
+        <referenceContainer name="productlist_top_ad" remove="true" />       
+      	<move element="category.product.addto.wishlist" destination="category.product.addto" after="-" />
+    </body>
+</page>
