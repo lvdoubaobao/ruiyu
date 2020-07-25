@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mazentop_Core extension
+ *                     NOTICE OF LICENSE
+ * 
+ *                     This source file is subject to the Mazentop License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     https://www.Mazentop.com/LICENSE.txt
+ * 
+ *                     @category  Mazentop
+ *                     @package   Mazentop_Core
+ *                     @copyright Copyright (c) 2016
+ *                     @license   https://www.Mazentop.com/LICENSE.txt Mazentop License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!--删除别的插件-->
+        <remove id="Magento_Marketplace::partners" />
+       <!--  <remove id="Mageplaza_Core::partners" />
+        <remove id="Mageplaza_Core::menu" /> -->
+       <!--  <add id="Mazentop_Core::menu" title="Mazentop" module="Mazentop_Core" sortOrder="50" resource="Mazentop_Core::menu"/>
+        <update id="Mageplaza_Blog::blog" parent="Mazentop_Core::menu" /> -->
+        <!-- <update id="Mageplaza_SocialLogin::sociallogin" parent="Mazentop_Core::menu" /> -->
+    </menu>
+</config>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mazentop_Registercheck extension
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
+    <module name="Mazentop_Registercheck" setup_version="1.0.0">
+        
+    </module>
+</config>

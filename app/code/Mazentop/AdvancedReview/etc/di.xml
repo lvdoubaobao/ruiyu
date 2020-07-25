@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Review\Block\Form">
+        <plugin name="mazentop_advancedReview_block_form"
+                type="Mazentop\AdvancedReview\Block\Form"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Review\Model\ResourceModel\Review\Collection">
+        <plugin name="mazentop_advancedReview_ResourceModel"
+                type="Mazentop\AdvancedReview\Model\ResourceModel\AdvancedReview\AdCollection"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Review\Model\Review">
+        <plugin name="mazentop_advancedReview_Model_Review"
+                type="Mazentop\AdvancedReview\Model\AdReview"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Review\Block\Adminhtml\Edit\Form">
+        <plugin name="mazentop_advancedReview_Adminhtml_Edit_Form"
+                type="Mazentop\AdvancedReview\Block\Adminhtml\Edit\Form"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Review\Block\Adminhtml\Add\Form">
+        <plugin name="mazentop_advancedReview_Adminhtml_Add_Form"
+                type="Mazentop\AdvancedReview\Block\Adminhtml\Add\Form"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Review\Controller\Adminhtml\Product\Post">
+        <plugin name="mazentop_advancedReview_Controller_Adminhtml_Product_Post"
+                type="Mazentop\AdvancedReview\Controller\Adminhtml\Product\Post"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <!--<type name="Magento\Review\Block\Adminhtml\Edit">-->
+        <!--<plugin name="mazentop_advancedReview_Adminhtml_Edit"-->
+                <!--type="Mazentop\AdvancedReview\Block\Adminhtml\Edit"-->
+                <!--sortOrder="10"-->
+                <!--disabled="false"/>-->
+    <!--</type>-->
+    <preference
+            for="Magento\Review\Controller\Product\Post"
+            type="Mazentop\AdvancedReview\Controller\Product\Post" />
+    <preference
+            for="Magento\Review\Controller\Adminhtml\Product\Save"
+            type="Mazentop\AdvancedReview\Controller\Adminhtml\Product\Save" />
+    <preference
+            for="Magento\Review\Controller\Adminhtml\Product\Post"
+            type="Mazentop\AdvancedReview\Controller\Adminhtml\Product\Post" />
+
+</config>

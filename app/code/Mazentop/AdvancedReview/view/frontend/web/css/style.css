@@ -1,0 +1,37 @@
+.ad-review .review-content img{max-width:100px;height:auto;cursor:pointer;margin-right: 10px;}
+.ad-review .review-content img.isclick{max-width: 300px;height:auto;max-height: 100%;}
+.ad-review .review-content .re_image {padding: 5px 0;}
+.ad-review .review-content .re_video{display: inline-block;position: relative; padding: 5px 0;}
+.ad-review .review-content .re_video .clickdiv{position: absolute;width: 150px;height: 100px;z-index: 100;  top: 0px;left: 0px;cursor:pointer;}
+.ad-review .review-content .re_video .clickdiv.isclick{width: 22px;height: 22px;z-index: 100;top:-11px;left: auto;right:-11px;background:url("../media/images/close.png") no-repeat;}
+.ad-review .review-content iframe{max-width: 150px!important;max-height: 100px!important;}
+.ad-review .review-content iframe.isclick{max-width: 604px!important;max-height: 340px!important;}
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+@media only screen and (max-width: 604px) {
+    .ad-review .review-content iframe.isclick{max-width: 320px!important;max-height: 170px!important;}
+}

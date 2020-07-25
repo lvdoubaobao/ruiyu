@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mazentop_Core extension
+ *                     NOTICE OF LICENSE
+ * 
+ *                     This source file is subject to the Mazentop License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     https://www.Mazentop.com/LICENSE.txt
+ * 
+ *                     @category  Mazentop
+ *                     @package   Mazentop_Core
+ *                     @copyright Copyright (c) 2016
+ *                     @license   https://www.Mazentop.com/LICENSE.txt Mazentop License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mazentop" translate="label" sortOrder="1">
+            <label>Mazentop Extensions</label>
+        </tab>
+        <section id="blog"><tab>mazentop</tab></section>
+        <section id="sociallogin"><tab>mazentop</tab></section>
+        <section id="mfblog"><tab>mazentop</tab></section>
+        <section id="quickshop"><tab>mazentop</tab></section>
+        <section id="vesall"><tab>mazentop</tab></section>
+    </system>
+</config>

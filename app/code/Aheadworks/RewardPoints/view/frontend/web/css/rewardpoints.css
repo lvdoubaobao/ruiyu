@@ -1,0 +1,52 @@
+.reward-points{
+    clear:both;
+}
+.checkout-payment-method .payment-option._collapsible.reward-points .payment-option-content{
+    display: block;
+}
+#reward-points-form a.action {
+    display: block;
+    background: #dd127b;
+    color: #fff;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 35px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.form-reward-points label.label {
+    float: none;
+}
+.payment-option.opc-payment-additional.reward-points .payment-option-title .action-toggle {
+    color: #1979c3;
+    cursor: pointer !important;
+}
+.payment-option.opc-payment-additional.reward-points .payment-option-title .action-toggle:after {
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 16px;
+    color: #8f8f8f;
+    content: '\e622';
+    font-family: 'luma-icons';
+    margin: 0 0 0 10px;
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
+}
+
+.payment-option.opc-payment-additional.reward-points._active .payment-option-title .action-toggle:after {
+    content: '\e621';
+}
+.payment-reward-spending-content{
+    clear: both;
+}
+h5.note-spend{
+    margin: 10px 0;
+    font-size:15px;
+}
+.payment-reward-spending-content .irs-with-grid{
+    display: none;
+}

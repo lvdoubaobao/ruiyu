@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Ihor Vansach (ihor@magefan.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Codazon_Slideshow::slideshow_title" title="Mazentop Slideshow" module="Codazon_Slideshow" parent="Magento_Backend::content" sortOrder="10"  resource="Codazon_Slideshow::slideshow_title"/>
+        <add id="Codazon_slideshow::slideshow" title="Manage Slideshows" module="Codazon_Slideshow" sortOrder="50" parent="Codazon_Slideshow::slideshow_title" action="slideshow/slideshow/" resource="Codazon_Slideshow::slideshow"/>
+    </menu>
+</config>

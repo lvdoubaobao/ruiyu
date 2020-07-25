@@ -1,0 +1,3 @@
+#adreview_img img{max-width:90%;}
+#adreview_img>div{width: 100%;  float: left;}
+#adreview_img span{display: block;  float: left;width: 33.3333%;text-align: center;}
