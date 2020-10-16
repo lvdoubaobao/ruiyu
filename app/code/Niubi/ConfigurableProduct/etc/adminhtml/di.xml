@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<config>
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions">
+        <plugin name="CustomOptionsUiPlugin" type="Niubi\ConfigurableProduct\Plugin\CustomOptionsUiPlugin" sortOrder="1"/>
+    </type>
+
+
+</config>

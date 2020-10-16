@@ -5,7 +5,8 @@
 define([
     'jquery',
     'mage/translate',
-    'jquery/ui'
+    'jquery/ui',
+    'layer'
 ], function($, $t) {
     "use strict";
 
@@ -26,6 +27,7 @@ define([
         },
 
         _create: function() {
+            console.log('bindsubmit')
             if (this.options.bindSubmit) {
                 this._bindSubmit();
             }
@@ -49,10 +51,55 @@ define([
          * @param {Object} form
          */
         submitForm: function (form) {
+
+            //
+            var radioval='';
+            $('.product-options-wrapper .field.required').find('label.label:first-child').each(function(){
+
+                var labelVal=$(this).attr('for').replace('select_', '');
+                if($(".product-options-wrapper .field.required .control input[name='options["+labelVal+"]']").length>0){
+                    $(".product-options-wrapper .field.required .control input[name='options["+labelVal+"]']").each(function(){
+                        if($(".product-options-wrapper .field.required .control input[name='options["+labelVal+"]']").is(":checked")){
+                            radioval=labelVal;
+                        }else{
+                            radioval=0;
+                        }
+                    });
+                    if(radioval==0){
+                        if($('.product-options-wrapper .field.required').find("label.label:first-child[for=select_"+labelVal+"]").parent().find('.mandatory').length>0){
+                        }else{
+                            $('.product-options-wrapper .field.required').find("label.label:first-child[for=select_"+labelVal+"]").after('<span class="mandatory" style="color:red;">This is mandatory</span>');
+
+
+                        }
+                    }else{
+                        $('.product-options-wrapper .field.required').find("label.label:first-child[for=select_"+labelVal+"]").next('span').remove();
+                    }
+                }
+
+            });
+            $('.product-options-wrapper .field.configurable.required').find('label.label:first-child').each(function(){
+                var labelVal=$(this).attr('for').replace('attribute', '');
+                if($(".product-options-wrapper .field.configurable.required .control select[name='super_attribute["+labelVal+"]']").length>0) {
+                    radioval = 1;
+                }
+            });
+
+            if($('.product-options-wrapper .field.required').find('label.label:first-child').length>0) {
+                if (radioval) {
+                    //return true;
+                } else {
+
+                    $("#buy-now").focus()
+                    return false;
+                }
+            }
+
             var addToCartButton, self = this;
 
             if (form.has('input[type="file"]').length && form.find('input[type="file"]').val() !== '') {
                 self.element.off('submit');
+
                 // disable 'Add to Cart' button
                 addToCartButton = $(form).find(this.options.addToCartButtonSelector);
                 addToCartButton.prop('disabled', true);
@@ -64,10 +111,11 @@ define([
         },
 
         ajaxSubmit: function(form) {
+            console.log(222);
+            layer.open({type: 2,content: 'Adding...'});
             var self = this;
             $(self.options.minicartSelector).trigger('contentLoading');
             self.disableAddToCartButton(form);
-
             $.ajax({
                 url: form.attr('action'),
                 data: form.serialize(),
@@ -79,10 +127,10 @@ define([
                     }
                 },
                 success: function(res) {
+                    console.log('cart',res)
                     if (self.isLoaderEnabled()) {
                         $('body').trigger(self.options.processStop);
                     }
-
                     if (res.backUrl) {
                         window.location = res.backUrl;
                         return;
@@ -95,12 +143,28 @@ define([
                         $(self.options.minicartSelector).trigger('contentUpdated');
                     }
                     if (res.product && res.product.statusText) {
+
                         $(self.options.productStatusSelector)
                             .removeClass('available')
                             .addClass('unavailable')
                             .find('span')
                             .html(res.product.statusText);
                     }
+                    layer.closeAll()
+
+                    //产品弹窗
+                   if (res.success){
+                        $("#gw-product-ajax-img").attr("src",res.success.product.image)
+                        $("#new-details").html(res.success.product.title)
+                        $("#gw-product-ajax-price").html(res.success.product.price)
+                        $("#addcartbox").show();
+                        setTimeout(()=>{
+                            $("#addcartbox").hide();
+                        },4000)
+                   }
+
+
+
                     self.enableAddToCartButton(form);
                 }
             });

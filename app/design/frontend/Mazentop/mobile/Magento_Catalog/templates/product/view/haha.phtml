@@ -1,0 +1,51 @@
+<div class="footer-add" id="footer-add" style="display: none">
+  <?php echo $this->getLayout()
+    ->createBlock('Magento\Framework\View\Element\Template')
+    ->setTemplate('Magento_Catalog::product/view/minicart.phtml')
+    ->toHtml();
+  ?>
+    <div class="add-to-cart" id="addToCart">
+        Add to Cart
+    </div>
+    <div class="buy-now" id="buyNowNow">
+        Buy Now
+    </div>
+</div>
+<script>
+    var footerAdd=document.getElementById("footer-add")
+    window.onscroll = function() {
+        //为了保证兼容性，这里取两个值，哪个有值取哪一个
+        //scrollTop就是触发滚轮事件时滚轮的高度
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        console.log("滚动距离" + scrollTop);
+        if (scrollTop>1359){
+            if (footerAdd.style.display=='none'){
+                footerAdd.style.display='flex'
+            }
+            console.log(footerAdd)
+          //
+        }else{
+            if (footerAdd.style.display=='flex'){
+                footerAdd.style.display='none'
+            }
+        }
+    }
+
+</script>
+<script>
+    require(
+        ["jquery"],function ($) {
+          $("#addToCart").click(function (event) {
+              console.log('我被点击了 好无聊')
+
+              $("#product-addtocart-button").click()
+          })
+            $("#buyNowNow").click(function (event){
+                console.log('我被buy now')
+
+                $("#buy-now").click()
+            })
+        }
+    )
+
+</script>

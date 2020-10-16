@@ -37,7 +37,7 @@ class Add extends \Magento\Checkout\Controller\Cart\Add
             }
 
             // empty the cart.
-            $this->cart->truncate();
+       //     $this->cart->truncate();
 
             $this->cart->addProduct($product, $params);
             if (!empty($related)) {

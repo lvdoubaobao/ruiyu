@@ -1,0 +1,143 @@
+#addcartbox {
+  position: fixed;
+  top: 0;
+  display: none;
+  width: 100%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 2 !important;
+
+  .addcartbox_content {
+    width: 90%;
+    left: 5%;
+    position: absolute;
+    top: 50%;
+    margin-top: -103px;
+    background: #fff;
+    box-shadow: 0px 0px 30px #333;
+    .success {
+      text-align: center;
+      font-size: 16px;
+      padding: 16px 0 6px 0;
+      font-weight: bold;
+      color: #e8529a;
+      letter-spacing: -0.05em;
+      border-bottom: 1px solid #dfdfdf;
+    }
+  }
+
+}
+.go-shoppinglist {
+  overflow: hidden;
+
+  background: #fff;
+ margin-bottom: 0rem;
+  padding: 0 15px;
+   li {
+    overflow: hidden;
+     margin-bottom: 0rem;
+     img {
+       float: left;
+       width: 35%;
+     }
+     dl {
+       float: right;
+       width: 60%;
+       overflow: hidden;
+       margin-bottom: 0px;
+       dt {
+         height: 40px;
+         line-height: 20px;
+         overflow: hidden;
+         font-size: 14px;
+         color: #666;
+       }
+       dd{
+         .price{
+           font-size: 14px;
+
+           margin-top: 10px;
+         }
+         .viewmore {
+           display: inline-block;
+           color: #fff;
+           background: #767676;
+           padding: 4px 6px;
+           font-size: 1.6rem;
+           margin: 15px 0;
+           cursor: pointer;
+         }
+      .addcartbox_checkout {
+           display: inline-block;
+           color: #fff;
+           background: #e8529a;
+        font-size: 1.6rem;
+           padding: 4px 6px;
+           margin: 15px 0;
+           margin-left: 3%;
+           cursor: pointer;
+         }
+       }
+     }
+  }
+}
+
+
+
+//购物车跟随
+
+
+
+//这是购物车跟随
+.footer-add{
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  width: 100%;
+  background: #ffffff;
+  height: 46px;
+  color: white;
+  display: flex;
+  font-size: 1.4rem;
+}
+.zopim{
+  bottom: 56px!important;
+}
+.footer-add .gouwu{
+  width: 20%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .minicart-wrapper{
+    position: relative;
+    .action.showcart .counter.qty {
+      color: #000;
+      vertical-align: initial;
+      position: absolute;
+      top: -6px;
+      right: 9px;
+    }
+  }
+}
+.footer-add .add-to-cart{
+  width: 40%;
+  background: #474647;
+  display: flex;
+  font-size:1.6rem ;
+  align-items: center;
+  justify-content: center;
+
+}
+.footer-add .buy-now{
+  width: 40%;
+  background: #e4007e;
+  display: flex;
+  font-size:1.6rem ;
+  align-items: center;
+  justify-content: center;
+}
+
+

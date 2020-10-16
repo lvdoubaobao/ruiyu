@@ -2,21 +2,92 @@
 //  * Copyright © 2015 Magento. All rights reserved.
 //  * See COPYING.txt for license details.
 //  */
-
 @autocomplete-background: @color-white;
 @autocomplete-border: 1px solid @form-element-input__border-color;
 @autocomplete-item-border: 1px solid @color-gray90;
 @autocomplete-item-hover: @color-gray91;
 @autocomplete-item-amount-color: @color-gray60;
+@autocomplete__background-color: @color-white;
+@autocomplete__border: 1px solid @form-element-input__border-color;
+@autocomplete-item__border: 1px solid @color-gray90;
+@autocomplete-item__hover__color: @color-gray91;
+@autocomplete-item-amount__color: @color-gray60;
 
 //
 //    Common
 //--------------------------------------
 
+@media only screen and (max-width: 450px) {
+
+    .block-search {
+        margin-bottom: 0;
+        .label {
+            position: absolute;
+            right: 60px;
+            top: 15px;
+            z-index: 99;
+            .lib-icon-font(
+                @_icon-font-content: @icon-search,
+                @_icon-font-size: 22px,
+                @_icon-font-line-height: 28px,
+                @_icon-font-margin: 0 @indent__s 0 0,
+                @_icon-font-color: @minicart-icons-color,
+                @_icon-font-color-hover: @minicart-icons-color-hover,
+                @_icon-font-color-active: @minicart-icons-color-hover,
+                @_icon-font-text-hide: true
+            );
+            display: inline-block;
+            float: right;
+            &.active {
+                + .control {
+                    input {
+                        position: static;
+                    }
+                }
+            }
+        }
+        .control {
+            /*border-top: 1px solid @border-color__base;*/
+            clear: both;
+            margin: 0px -299px -1px;;
+            padding: 0 @layout__width-xs-indent;
+            z-index: 98;
+            width: 100%;
+            position: fixed;
+            top: 60px;
+            background: #ffffff;
+            .nested{
+                display: none;
+            }
+        }
+    }
+
+}
+@media only screen and (max-width: 376px) {
+
+    .block-search {
+        margin-bottom: 0;
+        .control {
+            /*border-top: 1px solid @border-color__base;*/
+            clear: both;
+            margin: 0px -276px -1px;;
+            padding: 0 @layout__width-xs-indent;
+            z-index: 98;
+            width: 100%;
+            top: 60px;
+            position: fixed;
+            background: #ffffff;
+            .nested{
+                display: none;
+            }
+        }
+    }
+}
 & when (@media-common = true) {
 
     .block-search {
         margin-bottom: 0;
+
         .block {
             &-title {
                 display: none;
@@ -27,9 +98,9 @@
         }
         .label {
             position: absolute;
-            right: 5px;
-            top: 13px;
-            z-index: 999;
+            right: 60px;
+            top: 9px;
+            z-index: 99;
             .lib-icon-font(
             @_icon-font-content: @icon-search,
                 @_icon-font-size: 22px,
@@ -53,25 +124,22 @@
         .action.search {
             display: none;
         }
-        .control {
-            /*border-top: 1px solid @border-color__base;*/
-            clear: both;
-            margin: 0 -@layout__width-xs-indent -1px;
-            padding: 0 @layout__width-xs-indent;
-            background: #a11a52;
-        }
+
 
         input {
             left: -300%;
             position: absolute;
             margin: 10px 0;
-            background: #a11a52;
-            color: #fff;
+            background: #ffffff;
+            border: 2px solid #9b9498;
             height: 40px;
-            font-size: 14px;
+            font-size: 15px;
+
+            box-shadow: 0 4px 6px 0 rgba(0,0,0,.35);
         }
-        .nested {
-            display: none;
+        input:not([disabled]):focus{
+            box-shadow: 0 4px 6px 0 rgba(0,0,0,.35);
+
         }
     }
 
@@ -310,14 +378,14 @@
 }
 @media screen and (max-width: 499px){
     .block-search .label:before {
-        background-size: 70%;
+        background-size: 32px 32px;
        /*  margin-top: 10px;  */       
     }
 }
 @media screen and (max-width: 399px){
     .block-search .label:before {
-        width: 42px;
-        height: 42px; 
+        width: 32px;
+        height: 32px;
         margin-top: 5px;                
     }
     .block-search .actions{

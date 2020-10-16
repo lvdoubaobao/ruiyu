@@ -68,6 +68,10 @@ div#switcher-language-trigger {
 }
 .panel.wrapper .panel.header{
     padding:5px 0;
+    align-items: center;
+     display: flex;
+    justify-content: center;
+    height: 50px;
 }
 div#authorization-trigger {
     color: white;
@@ -123,11 +127,14 @@ a.my-account {
 }
 @media(max-width:769px){
     span.counter-number {
-    background: none;
-    border-radius: 15px 15px 15px 15px;
-    color: #222222;
-    width: 30px;
-    display: inline;
+        background: #ff0075;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
     }
 }
 @media(max-width:769px){
@@ -386,6 +393,7 @@ span.qty-images {
 .price-box.price-final_price {
     text-align: left;
     overflow: hidden;
+    display: inline-block;
 }
 /*shopping-cart购物车页面*/
 .add-cart-content ul{
@@ -1053,6 +1061,9 @@ div#block-shipping {
 .products.wrapper.grid.products-grid .product-item .action.towishlist{
     color:#a11a52!important;
     overflow: hidden;
+}
+.products.wrapper.grid.products-grid .product-item .action.towishlist:before{
+    display: none;
 }
 .products.wrapper.grid.products-grid .product-item .product-item-actions .action.tocompare{
     display: none;

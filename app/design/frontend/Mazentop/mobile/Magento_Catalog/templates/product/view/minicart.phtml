@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+?>
+
+<div class="gouwu">
+    <div data-block="minicart" class="minicart-wrapper">
+        <a class="action showcart" href="/checkout/cart/"
+           data-bind="scope: 'minicart_content'">
+            <span class="shopping-bag"></span>
+            <span class="text"><?php /* @escapeNotVerified */ echo __('My Cart'); ?></span>
+            <span class="counter qty empty"
+                  data-bind="css: { empty: !!getCartParam('summary_count') == false }">
+            <span class="counter-number"><!-- ko text: getCartParam('summary_count') --><!-- /ko --></span>
+            <span class="counter-label">
+            <!-- ko if: getCartParam('summary_count') -->
+                <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
+                <!-- ko i18n: 'items' --><!-- /ko -->
+                <!-- /ko -->
+            </span>
+        </span>
+        </a>
+
+
+    </div>
+</div>

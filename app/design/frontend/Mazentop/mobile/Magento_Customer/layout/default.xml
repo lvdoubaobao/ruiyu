@@ -14,8 +14,8 @@
             </block>
         </referenceBlock>
         <referenceContainer name="customer_form_login_mini">
-            <block class="Mageplaza\SocialLogin\Block\Popup\Authentication\Social" before="-" name="social-login" as="social-login" ifconfig="sociallogin/general/is_enabled" template="Mageplaza_SocialLogin::form/social.phtml" cacheable="false"/>
-        </referenceContainer>  
+         <block class="Mageplaza\SocialLogin\Block\Popup\Authentication\Social" before="-" name="social-login" as="social-login" ifconfig="sociallogin/general/is_enabled" template="Mageplaza_SocialLogin::form/social.phtml" />
+      </referenceContainer>
         <block class="Magento\Theme\Block\Html\Header" name="header" as="header">
             <arguments>
                 <argument name="show_part" xsi:type="string">welcome</argument>

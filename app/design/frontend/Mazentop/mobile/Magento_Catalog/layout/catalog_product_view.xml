@@ -8,12 +8,17 @@
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <meta name="format-detection" content="telephone=no" />
+        <css src="Magento_Catalog::css/layer.css"  />
     </head>
     <body>
         <move element="page.main.title" destination="product.info.main" before="-"/>
         <move element="product.info.stock.sku" destination="product.info.price" after="product.price.final"/>
         <move element="product.info.review" destination="product.info.main" before="product.info.price"/>
-        
+        <container name="haha">
+            <block class="Magento\Framework\View\Element\Template"  name="hahaha" template="Magento_Catalog::product/view/haha.phtml">
+            </block>
+            <block class="Magento\Framework\View\Element\Template" name="cartSuccess" template="Magento_Catalog::product/view/cartSuccess.phtml"></block>
+        </container>
         <referenceBlock name="product.info.details">
             <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.description" template="product/view/tabattribute.phtml" group="detailed_info">
                 <arguments>

@@ -56,7 +56,11 @@
 @filter-link: @color-gray-darken4;
 @filter-link-hover: darken(@filter-link, 30%);
 @filter-quantity: @color-gray52;
-
+.option_optionStock {
+    background: linear-gradient(14deg, transparent 48.5%, rgb(51, 51, 51) 51.5%, rgb(51, 51, 51) 36.5%, transparent 53.5%) !important;
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+}
 //
 //  Common
 //  _____________________________________________
@@ -80,10 +84,18 @@
 
     .page-header {
         .lib-css(background-color, @header__background-color);
-        margin-bottom:0px;
-        position:relative;
+        margin-bottom:1px;
+        position: fixed;
+        z-index: 80;
+        width: 100%;
+        top:0px;
+        background: #ffff;
     }
-
+    .page-top{
+        position: fixed;
+        top: 50px;
+        z-index: 80;
+    }
     .header.panel {
         > .header.links {
             .lib-list-inline();
@@ -740,13 +752,12 @@
 @media(max-width: 767px){
      .nav-toggle{
         left: 10px;
-        top: 20px;
+        top: 18px;
         &:before{
             content:'' !important;
-            width:55px;
+            width:42px;
             height: 37px;
             background: url('../images/menu.png') no-repeat;
-
         }       
     }
     .nav-sections .header.links{

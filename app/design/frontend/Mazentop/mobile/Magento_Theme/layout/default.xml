@@ -7,18 +7,19 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceBlock name="block_top_disocunt">
-            <arguments>
-                <argument name="block_id" xsi:type="string">mobile-header-top-discount</argument>
-            </arguments>
-        </referenceBlock>
+
+        <!--<referenceBlock name="block_top_disocunt">-->
+            <!--<arguments>-->
+                <!--<argument name="block_id" xsi:type="string">mobile-header-top-discount</argument>-->
+            <!--</arguments>-->
+        <!--</referenceBlock>-->
         <referenceBlock name="logo">
             <arguments>
                 <argument name="logo_file" xsi:type="string">images/logo.png</argument>
                 <argument name="logo_img_width" xsi:type="number">230</argument>
                 <argument name="logo_img_height" xsi:type="number">50</argument>
             </arguments>
-        </referenceBlock>      
+        </referenceBlock>
         <referenceBlock name="top.links">
             <block class="Magento\Theme\Block\Html\Header" name="header" as="header" before="-">
                 <arguments>
@@ -26,13 +27,17 @@
                 </arguments>
             </block>
         </referenceBlock>
-        
-        <referenceContainer name="header.panel">
-            <container name="header.account" label="Page Header" as="header-account" htmlTag="div" htmlClass="mobile-header-account">
+        <container name="account" >
+            <block class="Magento\Framework\View\Element\Template" name="accountUser" template="Magento_Theme::html/account.phtml" />
+        </container>
+    <referenceContainer name="header.panel">
+
+          <container name="header.account" label="Page Header" as="header-account" htmlTag="div" htmlClass="mobile-header-account">
                 <container name="header.account.wrapper" label="Page Header" as="header-account-wrapper" htmlTag="div" htmlClass="header-account-content">
                     <block class="Magento\Framework\View\Element\Template" name="header-account-links" template="Magento_Customer::form/miniauthorization.phtml" />
-                </container>        
-            </container>        
+                </container>
+            </container>
+
         </referenceContainer>
 
         <referenceContainer name="header.container">
@@ -42,9 +47,16 @@
                 </arguments>
             </block>
         </referenceContainer>
-        
-        
-        <referenceContainer name="page.wrapper">            
+
+
+        <referenceContainer name="page.wrapper">
+            <container name="page.discount.top" htmlTag="div" htmlClass="page-top-discount" before="header.container">
+                <block class="Magento\Cms\Block\Block" name="block_top_disocunt">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">mobile-header-top-discount</argument>
+                    </arguments>
+                </block>
+            </container>
             <container name="backtop" after="footer-container">
                 <block class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/back_to_top.phtml" />
             </container>
@@ -77,13 +89,14 @@
         <referenceBlock name="skip_to_content" remove="true"/>
         <referenceBlock name="header.top.slogan" remove="true"/>
         <referenceBlock name="header-wrapper" remove="true"/>
-        
+
         <move element="store_language" destination="header.panel" before="-" />
-        <move element="logo" destination="header.panel" after="currency" />
+        <move element="accountUser" destination="header.panel" before="logo" />
+        <move element="logo" destination="header.panel" after="accountUser" />
         <move element="top.search" destination="header.panel" after="customer" />
-        <move element="minicart" destination="cpanel.footer" />
+       <!-- <move element="minicart" destination="cpanel.footer" />-->
         <!--<move element="header-mini-links" destination="header.panel" before="top.search" />-->
-        <!--<move element="minicart" destination="header.panel" after="-" />-->
+       <move element="minicart" destination="header.panel" after="top.search" />
         <move element="header.links" destination="header.account.wrapper" after="-" />
         <referenceContainer name="catalog.compare.link" remove="true" />
         <referenceContainer name="register-link" remove="true" />

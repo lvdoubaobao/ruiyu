@@ -63,6 +63,7 @@ require([
                 if(radioval){
                     return true;
                 }else{
+                    $("#buy-now").focus()
                     return false;
                 }
             });

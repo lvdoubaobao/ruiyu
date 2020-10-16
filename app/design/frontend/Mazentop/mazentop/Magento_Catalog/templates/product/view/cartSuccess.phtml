@@ -1,0 +1,40 @@
+<div class="tanchuang" id="tanchuang" >
+<div id="addcartbox" class="j-car" >
+    <h3 class="addcartbox_title">Product successfully add to your cart!</h3>
+
+    <a href="javascript:;" id="addcart_close" onclick="addcartClose();">close</a>
+    <h6 class="addcart_item"><span class="gw-product-addcart-qty" id="gw-product-addcart-qty">0</span> items in your cart</h6>
+    <ul class="addcart_list clearer">
+        <li class="addcart_list1" >
+            <img id="addcart_list1" src="" width="100%">
+        </li>
+        <li class="addcart_list2">
+            <p class="addcart_right1" id="new-details">Beautyforever Brazilian Straight Hair 3Bundles With Lace Closure 4*4</p><div class="truncated_full_value" style="display: none;"></div>
+            <p></p>
+            <p class="addcart_right2"><i class="gw-product-detail-ajax-amout" ><span id="gw-product-detail-ajax-amout">1 <span>*</i><a href="#" class="gw-product-detail-ajax-detail">Details</a></p>
+        </li>
+    </ul>
+    <p class="addcart_sub">Cart Subtotal:<i class="gw-product-detail-subtotal"><span class="price" id="gw-product-detail-subtotal">701.68</span></i></p>
+    <ul>
+        <li class="addcart_bottom1">
+            <a href="javascript:;" id="addcart_continue" onclick="addcartClose();">continue shopping</a>
+        </li>
+        <li class="addcart_bottom2">
+            <a href="/checkout/" class="payment_now"><button type="button">Checkout</button></a>
+            <a href="/checkout/cart/" class="addcart_view">View shopping cart</a>
+        </li>
+
+    </ul>
+</div>
+</div>
+<script>
+    function addcartClose(){
+        require(['jquery'],function ($){
+               $("#tanchuang").hide()
+        }
+        )
+    }
+</script>
+
+
+
