@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Sales\Helper\Guest" type="Niubi\Sales\Helper\Guest" />
+    <preference for="Magento\Sales\Controller\Guest\Form" type="Niubi\Sales\Controller\Guest\Form" />
+</config>

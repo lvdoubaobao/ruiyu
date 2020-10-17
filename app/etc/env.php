@@ -8,52 +8,6 @@ return array (
   array (
     'key' => '15f632b3d46a7f67bb7dd4e90c2d5f3e',
   ),
-  /*'cache' => 
-  array (
-    'frontend' => 
-    array (
-      'default' => 
-      array (
-        'id_prefix' => 'm2_',
-        'backend' => 'Cm_Cache_Backend_Redis',
-        'backend_options' => 
-        array (
-          'server' => '127.0.0.1',
-          'port' => '6379',
-          'persistent' => '',
-          'database' => 1,
-          
-          'connect_retries' => 2,
-          'read_timeout' => 1,
-          'automatic_cleaning_factor' => 0,
-          'compress_tags' => 1,
-          'compress_data' => 1,
-          'compress_threshold' => 20480,
-          'compression_lib' => 'gzip',
-        ),
-      ),
-      'page_cache' => 
-      array (
-        'id_prefix' => 'm2_',
-        'backend' => 'Cm_Cache_Backend_Redis',
-        'backend_options' => 
-        array (
-          'server' => '127.0.0.1',
-          'port' => '6379',
-          'persistent' => '',
-          'database' => 2,
-       
-          'connect_retries' => 2,
-          'read_timeout' => 1,
-          'automatic_cleaning_factor' => 0,
-          'compress_tags' => 1,
-          'compress_data' => 1,
-          'compress_threshold' => 20480,
-          'compression_lib' => 'gzip',
-        ),
-      ),
-    ),
-  ),*/
   'session' => 
   array (
     'save' => 'files',
@@ -91,7 +45,6 @@ return array (
         'username' => 'mzt56743_db',
         'password' => 'WskHxSmiN8JZhwR8',
         'active' => '1',
-      
       ),
     ),
   ),

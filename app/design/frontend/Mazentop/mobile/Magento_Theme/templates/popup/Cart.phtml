@@ -1,0 +1,116 @@
+
+<?php
+/**
+ * @var \Mslynn\Cart\Block\Cart $block
+ */
+
+?>
+<?php if($block->getEnable()) {?>
+<div class="advbox-cart" id="dropin" style="visibility:visible;display: none">
+    <div class="advbox-alert2">
+        <div class="advpic">
+            <div style="width:100%;min-height:240px;margin-top:20px;">
+                <div style="width:100%; margin:0px auto; padding:0px 0px;">
+                    <!--foot_coupon_message-->
+                    <!--start-->
+
+                    <div>
+                        <div class="advbox-alert2" style="width: 80%;margin-left: 10%;">
+                            <!--                            <img src="-->
+                            <!--skin/frontend/base/default/images/logo-1.png" alt="" style="width: 90%" />-->
+                            <p class="advbox-info-customer">Dear,your cart is waiting for your payment! <span
+                                        style="color: #ff0000;"><strong>Up to 32% OFF </strong></span>for your orders!
+                            </p>                             <a href="/checkout/"
+                                                                class="advbox-info-button">
+                                hurry to pay now!
+                            </a>
+                            <p class="advbox-info-cart">You cart</p>
+
+                        </div>
+
+
+                        <div id="header-cart"
+                             class="mini-cart-content dropdown-content left-hand block block-cart skip-content skip-content--style"  data-bind="scope: 'minicart_content'">
+
+
+                            <div  id="cartinfo" data-bind="foreach: { data: getCartItems(), as: 'item' }">
+
+
+
+                                <dd>
+                                    <div class="d-img fl">
+                                        <a data-bind="attr: {href: product_url, title: product_name}"  href=""
+                                           title=" ">
+                                            <img data-bind="attr: {src: product_image.src, alt: product_image.alt}"  src=""
+                                                 alt=" ">
+                                        </a>
+                                        <span class="discount"><span></span>% OFF</span>
+
+
+                                    </div>
+
+                                    <div class="d-tex fr">
+                                        <h3 class="product-name" data-id="214" data-bind="text: product_name">Beautyforever Brazilian Body Wave 3
+                                            Bundles Unprocessed Virgin Hair Weave </h3>
+                                        <div class="d-zt">
+                                            <!--Sub total starts here -->
+                                            <p class="discount"><span><b>20</b>% OFF</span></p>
+                                            <span class="cart-price">
+                                      <span class="price">$1,101.20</span>
+                                            </span>
+                                            <span data-bind="text:qty">1</span>x
+                                            <span class="add-price" data-bind="text:product_price_value">$275.30</span>
+                                            <div class="lode_img"></div>
+                                        </div>
+                                    </div>
+                                </dd>
+                            </div> <!-- end: inner block -->
+
+
+
+
+
+                        </div>
+                        <p class="nonpaymen_priceWrap" data-bind="scope: 'minicart_content'">
+                            <span class="nonpaymen_sub">Subtotal:</span>
+                            <sapn class="nonpayment_price" data-bind="html:getCartParam('subtotal')"></sapn>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void(0);" class="closebtn-alert">×</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(['jquery'],function ($) {
+        var last = new Date().getTime(),
+            curr = new Date().getTime(),
+            out = <?php echo (int)$block->getTime() ?>* 1000;
+        document.onmouseover=function(){
+            last = new Date().getTime();
+        };
+        var inter=setInterval(function(){
+            curr = new Date().getTime();
+            console.log( JSON.parse(localStorage['mage-cache-storage']))
+            if(curr - last > out){
+                clearInterval(inter);
+                console.log("那么长时间没未操作了！");
+
+                //查询购物车数量
+                let storage=  JSON.parse(localStorage['mage-cache-storage']);
+                if(storage.cart.items.length>0){
+                    $("#dropin").show()
+                }
+
+            }
+        }, 1000);
+
+        $(".closebtn-alert").click(function () {
+            $("#dropin").hide()
+
+        })
+    })
+</script>
+<?php }?>

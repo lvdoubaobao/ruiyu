@@ -11,6 +11,11 @@
         <css src="css/cw-theme.css"/>
     </head>
     <body>
+        <container name="PopupCart">
+            <block class="Mslynn\Cart\Block\Cart"  name="popup_cart" template="Magento_Theme::popup/Cart.phtml">
+            </block>
+
+        </container>
         <referenceBlock name="logo">
             <arguments>
                 <argument name="logo_file" xsi:type="string">images/logo.png</argument>

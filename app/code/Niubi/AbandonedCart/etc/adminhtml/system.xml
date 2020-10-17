@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mageplaza" translate="label" sortOrder="10">
+            <label>Mageplaza</label>
+        </tab>
+        <section id="mailgun" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>mailgun</label>
+            <tab>mageplaza</tab>
+            <resource>Niubi_Form::mailgun</resource>
+            <group id="abandoned" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>弃购邮件配置</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>模块开启</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="time" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>设置弃购时间提醒</label>
+                    <comment>整数，以每小时为单位 多个用逗号隔开</comment>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>邮件标题</label>
+                    <comment></comment>
+                </field>
+                <field id="tel" translate="label" type="textarea" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>邮件内容</label>
+                    <comment>{{name}}为姓名 {{sku:BW3X12W,BST3FT}} {{cartProducts}}为购物车产品组 {{relatedProducts}}为关联产品组 {{bestSellerProducts}}为最近一个月热门</comment>
+                </field>
+                <field id="tel_review"  translate="label" type="button" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0" >
+                    <label>预览</label>
+                    <frontend_model>Niubi\AbandonedCart\Block\System\Config\Botton</frontend_model>
+                </field>
+                <field id="title1" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>邮件标题</label>
+                    <comment></comment>
+                </field>
+                <field id="tel1" translate="label" type="textarea" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>邮件内容1</label>
+                    <comment>{{name}}为姓名 {{sku:BW3X12W,BST3FT}} {{cartProducts}}为购物车产品组 {{relatedProducts}}为关联产品组 {{bestSellerProducts}}为最近一个月热门</comment>
+                </field>
+                <field id="tel_review1"  translate="label" type="button" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0" >
+                    <label>预览</label>
+                    <frontend_model>Niubi\AbandonedCart\Block\System\Config\Botton1</frontend_model>
+                </field>
+                <field id="title2" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>邮件标题</label>
+                    <comment></comment>
+                </field>
+                <field id="tel2" translate="label" type="textarea" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>邮件内容2</label>
+                    <comment>{{name}}为姓名 {{sku:BW3X12W,BST3FT}} {{cartProducts}}为购物车产品组 {{relatedProducts}}为关联产品组 {{bestSellerProducts}}为最近一个月热门</comment>
+                </field>
+                <field id="tel_review2"  translate="label" type="button" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0" >
+                    <label>预览</label>
+                    <frontend_model>Niubi\AbandonedCart\Block\System\Config\Botton2</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>   
+</config>

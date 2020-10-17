@@ -1,0 +1,93 @@
+<!--订阅弹窗-->
+<?php
+/**
+ * @var \Mslynn\Subscribe\Block\SubscribeBlock $block
+ */
+
+if ($block->getEnable()){
+?>
+<div class="mslynn_subscribe" id="mslynn_subscribe" style="display: none">
+    <div class="mslnn_popup" <?php if($block->getBackgroudMobile()){ ?> style="background: url(<?php echo $block->getBackgroudMobile(); ?>)" <?php } ?>>
+        <div class="closebtn-alert" id="closebtn"></div>
+        <div class="mslynn_popup_content">
+            <div class="block-content">
+                <img src="<?php echo $block->getLogoSrc(); ?>" style="width: 70%">
+                <h2 ><?php echo $block->getTitleMobile(); ?></h2>
+                <p><?php echo $block->getContentMobile(); ?></p>
+            </div>
+            <form class="form subscribe" id="custom-form" action="<?php echo $block->getFormActionUrl(); ?>"
+                  data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+                  method="post">
+                <div class="field newsletter flex-center" >
+                    <div class="control margin-20">
+                        <input name="email" type="email" placeholder="Enter email address"
+                               data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                    <div class="actions inline-block" >
+                        <button class="action subscribe primary" title="Submit" type="submit">
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#custom-form": {
+            "validation": {}
+        }
+    }
+</script>
+<script>
+    require(['jquery'], function ($) {
+        $("#closebtn").click(function () {
+            $("#mslynn_subscribe").hide()
+            cache('subscribe', 1,  parseInt('<?php echo $block->getTime2()*60; ?>'))
+        })
+        $("#custom-form").submit(function () {
+            cache('subscribe', 1, parseInt('<?php echo $block->getTime2()*60; ?>'))
+        })
+        if (!cache('subscribe')==1){
+            setTimeout(function () {
+                $("#mslynn_subscribe").show()
+            },parseInt(parseInt('<?php echo $block->getTime1()*1000; ?>')))
+        }
+    })
+
+    //缓存,默认有效期7天
+    function cache(key, value, seconds) {
+        var timestamp = Date.parse(new Date()) / 1000
+        if (key && value === null) {
+            //删除缓存
+            localStorage.removeItem(key);
+        } else if (key && value) {
+            //设置缓存
+            if (!seconds) {
+                var expire = timestamp + (3600 * 24 * 1)
+            } else {
+                var expire = timestamp + seconds
+            }
+            value = value + "|" + expire
+            localStorage.setItem(key, value);
+        } else if (key) {
+            //获取缓存
+            var val = localStorage.getItem(key);
+            if (!val){
+                return  false;
+            }
+            var tmp = val.split("|")
+            if (!tmp[1] || timestamp >= tmp[1]) {
+                localStorage.removeItem(key);
+                return false
+            } else {
+                return tmp[0]
+            }
+        } else {
+            alert("key不能空")
+        }
+    }
+</script>
+<?php }?>

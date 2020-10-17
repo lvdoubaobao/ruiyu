@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Niubi_Form::video" title="video form" module="Niubi_Form" sortOrder="51" parent="Magento_Reports::report_marketing" action="form/Video/index" resource="Magento_Reports::report"  />
+        </menu>
+</config>

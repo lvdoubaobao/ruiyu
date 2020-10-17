@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mailgun>
+            <abandoned>
+                <enable>1</enable>
+                <time>8,24</time>
+                <title>弃购购物车标题</title>
+                <tel>测试</tel>
+                <tel_review>1</tel_review>
+                <title1>弃购购物车标题</title1>
+                <tel1>测试</tel1>
+                <tel_review1>1</tel_review1>
+                <title2>弃购购物车标题</title2>
+                <tel2>测试</tel2>
+                <tel_review2>1</tel_review2>
+            </abandoned>
+        </mailgun>
+    </default>
+</config>

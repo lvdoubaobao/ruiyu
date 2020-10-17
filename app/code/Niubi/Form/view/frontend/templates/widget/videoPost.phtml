@@ -1,0 +1,171 @@
+<?php
+/**
+ * @var \Magento\Cms\Block\Widget\Block $block
+ */
+?>
+<style >
+    @media (min-width: 768px) {
+        .share-footer-wrap {
+            box-sizing: border-box;
+            padding: 10px;
+            width: 91%;
+            margin: 0 auto;
+            background: #fff;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .share-footer-right {
+            width: 49%;
+            float: right;
+        }
+
+        .share-footer-left {
+            width: 49%;
+            float: left;
+        }
+        .form-warp{
+            padding-left: 100px;
+            padding-right: 100px;
+            width: 100%
+        }
+        .form-tijiao{
+            background: white;
+            padding: 20px;
+
+        }
+
+
+
+        .form-textarea {
+            height: 188px;
+        }
+        .videoAward-wrapper_submit-tit {
+            font-size: 36px;
+            color: #000;
+            line-height: 1.2;
+            padding-bottom: 40px;
+            text-align: center;
+            font-weight: 400;
+        }
+        .submit{
+            width: 136px;
+            padding: 0!important;
+            height: 27px!important;
+            line-height: 27px;
+            display: block;
+            background: #ff6799;
+            font-size: 24px!important;
+            text-transform: capitalize;
+            font-weight: 400;
+            color: #fff;
+        }
+    }
+    @media (max-width: 768px) {
+        .form-warp{
+            width: 94%;
+            margin: 1em auto 0;
+            background: #fff;
+            box-sizing: border-box;
+            padding: 5% 8%;
+
+        }
+        .videoAward-wrapper_submit-tit{
+            font-size: 1.3em;
+            color: #000;
+            line-height: 1.2;
+            padding-bottom: 1em;
+            text-align: center;
+        }
+    }
+
+</style>
+<div class="form-warp">
+
+
+
+<form class="form-tijiao " id="oar-widget-orders-and-returns-form" data-mage-init='{"ordersReturns":{}, "validation":{}}' action="/form/video/save"
+      method="post" name="guest_post" class="share-footer-wrap">
+    <h2 class="videoAward-wrapper_submit-tit">Send Your Video/Post Link To Us:</h2>
+    <fieldset class="fieldset  share-footer-left">
+        <div  class="field  required " >
+
+
+            <div class="control">
+                <input type="text" class="input-text" id="name" name="name"
+                       placeholder="Name"
+                       data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div  class="field email required">
+
+
+            <div class="control">
+                <input type="email" class="input-text" id="email" name="email"
+                    placeholder="<?php /* @escapeNotVerified */ echo __('Email') ?>"       data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field find required">
+
+            <label class="label" for="quick-search-type-id"><span><?php /* @escapeNotVerified */ echo __('Sharing Style.') ?></span></label>
+
+            <div class="control">
+                <select name="type" id="quick-search-type-id" class="select">
+                    <option value="video"><?php /* @escapeNotVerified */ echo __('video'); ?></option>
+                    <option value="post"><?php /* @escapeNotVerified */ echo __('post'); ?></option>
+                </select>
+            </div>
+        </div>
+        <div  class="field email required">
+
+
+            <div class="control">
+                <input type="text" class="input-text" id="Link" name="link"
+                       placeholder="<?php /* @escapeNotVerified */ echo __('Video/Post Link') ?>"       data-validate="{required:true}"/>
+            </div>
+        </div>
+
+    </fieldset>
+    <fieldset class="fieldset  share-footer-right">
+
+        <div  class="field" >
+
+            <div class="control">
+                    <textarea class="input-text form-textarea" name="content" placeholder="leave us your questions, your video/post need 48hours to audit."></textarea>
+            </div>
+        </div>
+    </fieldset>
+    <div  style="text-align: center;width: 100%">
+        <div class="primary">
+            <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary">
+                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+
+
+
+
+
+</form>
+</div>
+<script>
+    require([
+        "jquery"
+    ],function($){
+        $(".video_btn").click(function (){
+            console.log(this)
+            let link =$(this).data("videolink")
+       //     $("#myIframe").attr('width','100%')
+         //   $("#myIframe").attr('height','100%')
+            $("#myIframe").attr('src',link)
+            $(".video_alert_mask").show()
+        })
+
+        $(".close").click(function(){
+            $("#myIframe").attr('src','')
+            $(".video_alert_mask").hide()
+        })
+    })
+
+</script>

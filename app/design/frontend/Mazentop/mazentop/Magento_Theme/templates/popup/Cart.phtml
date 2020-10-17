@@ -1,0 +1,79 @@
+<?php
+/**
+ * @var \Mslynn\Cart\Block\Cart $block
+ */
+
+?>
+<?php if($block->getEnable()) {?>
+<div class="advbox-alert1" id="dropin" style="visibility: visible;display: none">
+    <div class="advpic">
+        <div style="width:100%;min-height:240px;">
+            <div style="width:100%; margin:0px auto; padding:0px 0px;">
+                <!--foot_coupon_message-->
+                <!--start-->
+                <div style="width:100%;min-height:260px;">
+                    <div class="advbox-info">
+                        <img src="<?php echo  $block->getLogoSrc();?>" alt="">
+                        <p class="advbox-info-customer">Dear,your cart is waiting for your payment! <span style="color: #ff0000;"><strong>Up to 32% OFF </strong></span>for your orders!</p>                                <a href="/checkout/" class="advbox-info-button">
+                            hurry to pay now!
+                        </a>
+                    </div>
+                    <div id="header-cart" class="mini-cart-content dropdown-content left-hand block block-cart skip-content skip-content--style" data-bind="scope: 'minicart_content'">
+                        <div class="" id="cartinfo" data-bind="foreach: { data: getCartItems(), as: 'item' }">
+                            <li class="item shopping-product">
+                                <!-- ko if: product_has_url -->
+                                <a  data-bind="attr: {href: product_url, title: product_name}"  href="eautyforever-cheap-7a-unprocessed-human-hair-curly-malaysian-virgin-hair-lace-closure.html" title="Beautyforever Best Curly Malaysian Virgin Hair 3Bundles With 4x4 Lace Closure" class="product-image">
+                                    <img  data-bind="attr: {src: product_image.src, alt: product_image.alt}" src="/media/catalog/product/cache/1/thumbnail/50x50/9df78eab33525d08d6e5fb8d27136e95/2/2/22_12_5.jpg" width="50" height="50" alt="Beautyforever Best Curly Malaysian Virgin Hair 3Bundles With 4x4 Lace Closure">
+                                </a>
+                                <div class="product-details">
+                                    <p class="product-name" data-id="346"><a data-bind="attr: {href: product_url}, text: product_name" href="https://www.beautyforever.com/beautyforever-cheap-7a-unprocessed-human-hair-curly-malaysian-virgin-hair-lace-closure.html">Beautyforever Best Curly Malaysian Virgin Hair 3Bundles With 4x4 Lace Closure</a></p>
+                                    <strong class="gw-top-qty" data-bind="text:qty">1</strong> x
+                                    <span class="price" data-bind="text:product_price_value" >$213.98</span>
+                                </div>
+                                <!-- /ko -->
+                                <!-- ko ifnot: product_has_url -->
+                                <!-- /ko -->
+                            </li>
+                        </div>
+                    </div>
+                    <p class="nonpaymen_priceWrap" data-bind="scope: 'minicart_content'">
+                        <span class="nonpaymen_sub">Subtotal:</span>
+                        <span data-bind="html:getCartParam('subtotal')"></span>
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void;" class="closebtn-alert">×</a>
+    </div>
+</div>
+<script>
+    require(['jquery'],function ($) {
+        var last = new Date().getTime(),
+            curr = new Date().getTime(),
+            out = <?php echo (int)$block->getTime() ?>* 1000;
+            document.onmouseover=function(){
+            last = new Date().getTime();
+        };
+        var inter=setInterval(function(){
+            curr = new Date().getTime();
+          //  console.log( JSON.parse(localStorage['mage-cache-storage']))
+            if(curr - last > out){
+                clearInterval(inter);
+                console.log("那么长时间没未操作了！");
+                //查询购物车数量
+       //       let storage=  JSON.parse(localStorage['mage-cache-storage']);
+              if(storage.cart.items.length>0){
+                  $("#dropin").show()
+              }
+            }
+        }, 1000);
+
+        $(".closebtn-alert").click(function () {
+                    $("#dropin").hide()
+
+            })
+    })
+</script>
+    <?php }?>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <subscribe>
+            <general>
+                <enable>1</enable>
+                <title>BE THE FIRST TO KNOW</title>
+                <content>Subscribe to the Porto eCommerce newsletter to receive timely updates from your favorite products.</content>    <title>BE THE FIRST TO KNOW</title>
+                <contentMobile>Subscribe to the Porto eCommerce newsletter to receive timely updates from your favorite products.</contentMobile>
+                <titleMobile>BE THE FIRST TO KNOW</titleMobile>
+                <time1>10</time1>
+                <time2>60</time2>
+            </general>
+        </subscribe>
+    </default>
+</config>

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+    <widget class="Niubi\Form\Block\Widget\VideoForm" id="video-form">
+        <label>video form</label>
+        <description>form</description>
+    </widget>
+</widgets>

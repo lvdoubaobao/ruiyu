@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mailgun>
+            <general>
+                <enable>1</enable>
+                <mailgun_key>key-9989fc3ec241ca3ff413aa997d83f80e</mailgun_key>
+                <mailgun_domian>email.mslynnhair.com</mailgun_domian>
+                <mailgun_from>contact@mslynnhair.com</mailgun_from>
+                <mailgun_from_name>msln</mailgun_from_name>
+                <mailgun_to>736400469@qq.com</mailgun_to>
+            </general>
+        </mailgun>
+    </default>
+</config>
