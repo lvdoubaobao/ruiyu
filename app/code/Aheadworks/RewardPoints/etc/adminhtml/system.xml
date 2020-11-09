@@ -42,10 +42,10 @@
                     <label>Refund to Reward Points Automatically</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                 <field id="is_spend_on_shipping" translate="label,comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                <!-- <field id="is_spend_on_shipping" translate="label,comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Points could be spent on shipping fee</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
+                </field> -->
                 <field id="once_min_balance" translate="label,comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Points can't be used unless the balance is greater than</label>
                     <comment><![CDATA[empty or 0 - no limitations]]></comment>
@@ -137,10 +137,10 @@
                     <label>Display social sharing buttons at product page</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                 <field id="social_button_style" translate="label,comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                <!-- <field id="social_button_style" translate="label,comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Social buttons style</label>
                     <source_model>Aheadworks\RewardPoints\Model\Config\Source\SocialButtonStyle</source_model>
-                </field> 
+                </field> -->
                 <field id="is_display_invitation_to_newsletter" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Display invitation to newsletter subscription</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
